@@ -98,17 +98,66 @@ namespace Assignment
 
         public int[] AS01_FindFirstAndLastElementOfArray(int[] array, int target)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) return new int[] { -1 };
+
+            int first = -1;
+            int last = -1;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == target)
+                {
+                    first = i;
+                    break;
+                }
+            }
+            if (first == -1)
+            {
+                return new int[] { -1 };
+            }
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                if (array[i] == target)
+                {
+                    last = i;
+                    break;
+                }
+            }
+            return new int[] { first, last };
         }
 
         public int AS02_FindMaxLessThan(int[] array, int target)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) return -1;
+
+            int maxLessThanTarget = int.MinValue;
+            bool found = false;
+
+            foreach (int num in array)
+            {
+                if (num < target && num > maxLessThanTarget)
+                {
+                    maxLessThanTarget = num;
+                    found = true;
+                }
+            }
+            return found ? maxLessThanTarget : -1;
         }
 
         public int[] AS03_FindRange(int[] array, int min, int max)
         {
-            throw new NotImplementedException();
+            if (array == null || array.Length == 0) return new int[0];
+            var resultList = new System.Collections.Generic.List<int>();
+
+            foreach (int num in array)
+            {
+                if (num >= min && num <= max)
+                {
+                    resultList.Add(num);
+                }
+            }
+
+            return resultList.ToArray();
         }
 
         #endregion
